@@ -13,7 +13,8 @@ public enum ConsumeTypeEnum {
      */
     POS("POS机消费"),
     WeChat("微信支付消费"),
-    FastPayment("快捷支付消费");
+    FastPayment("快捷支付消费"),
+    Installment("信用卡分期购物消费");
 
     private String describe;
 

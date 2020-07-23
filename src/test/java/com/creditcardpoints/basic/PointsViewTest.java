@@ -3,7 +3,6 @@ package com.creditcardpoints.basic;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -83,10 +82,7 @@ public class PointsViewTest {
     @Test
     public void given_consumption_list_four_when_add_installment_then_get_points_details() {
         PointsView pointsView = new PointsView();
-
-        PointsView p =Mockito.mock(PointsView.class);
-        String actual =Mockito.doReturn("").when(p).view(consumptionListFour);
-
+        String actual = pointsView.view(consumptionListFour);
         Assert.assertEquals("总积分：1122\n" +
                 "2020-07-02 23:00 信用卡分期购物消费 6400元， 积分 +740\n" +
                 "2020-07-02 22:30 快捷支付消费 2208元， 积分 +320\n" +
