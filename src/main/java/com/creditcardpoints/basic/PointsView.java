@@ -1,12 +1,11 @@
 package com.creditcardpoints.basic;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
  * description: PointsView <br>
  * date: 2020/7/23/023 11:08 <br>
- * author: LouWei <br>
+ * @author: LouWei <br>
  * version: 1.0 <br>
  */
 public class PointsView {
@@ -15,9 +14,12 @@ public class PointsView {
         StringBuilder sb = new StringBuilder();
         StringBuilder result = new StringBuilder();
         long total = 0;
+        consumptionList.sort(
+                (o1, o2) -> o2.getTime().compareTo(o1.getTime())
+        );
         for (Consumption con : consumptionList) {
             CreditCardPoint creditCardPoint = new CreditCardPoint(con);
-            total+=creditCardPoint.point;
+            total += creditCardPoint.point;
             if ("".equals(sb.toString())) {
                 sb.append(creditCardPoint.consumption.describe())
                         .append(creditCardPoint.point);
@@ -27,9 +29,8 @@ public class PointsView {
                         .append(creditCardPoint.point);
             }
         }
-        result.append("总积分："+total+"\n");
+        result.append("总积分：" + total + "\n");
         result.append(sb);
         return result.toString();
     }
-
 }

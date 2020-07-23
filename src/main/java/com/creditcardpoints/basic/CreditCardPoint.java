@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 /**
  * description: CreditCardPoint <br>
  * date: 2020/7/23/023 10:52 <br>
- * author: LouWei <br>
+ * @author: LouWei <br>
  * version: 1.0 <br>
  */
 public class CreditCardPoint {
