@@ -1,4 +1,6 @@
-package com.creditcardpoints.basic;
+package com.creditcardpoints.pointcal;
+
+import com.creditcardpoints.basic.Consumption;
 
 import java.math.BigDecimal;
 

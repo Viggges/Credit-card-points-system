@@ -5,6 +5,7 @@ import java.util.List;
 /**
  * description: PointsView <br>
  * date: 2020/7/23/023 11:08 <br>
+ *
  * @author: LouWei <br>
  * version: 1.0 <br>
  */
@@ -14,6 +15,7 @@ public class PointsView {
         StringBuilder sb = new StringBuilder();
         StringBuilder result = new StringBuilder();
         long total = 0;
+        // 按时间排序
         consumptionList.sort(
                 (o1, o2) -> o2.getTime().compareTo(o1.getTime())
         );

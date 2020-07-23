@@ -10,6 +10,7 @@ package com.creditcardpoints.basic;
 public class CreditCardPoint {
     Consumption consumption;
     long point;
+
     public CreditCardPoint(Consumption consumption) {
         this.consumption = consumption;
         PointCal pointCal = new PointCal();

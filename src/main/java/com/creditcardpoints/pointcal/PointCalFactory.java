@@ -1,4 +1,6 @@
-package com.creditcardpoints.basic;
+package com.creditcardpoints.pointcal;
+
+import com.creditcardpoints.basic.ConsumeTypeEnum;
 
 import java.util.HashMap;
 import java.util.Map;
