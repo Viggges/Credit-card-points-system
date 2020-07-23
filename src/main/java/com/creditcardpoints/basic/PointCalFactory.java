@@ -17,6 +17,7 @@ public class PointCalFactory {
     public PointCalFactory() {
         iPointCalMap.put(ConsumeTypeEnum.POS.getDescribe(), new PosPointCal());
         iPointCalMap.put(ConsumeTypeEnum.WeChat.getDescribe(), new WeChatPointCal());
+        iPointCalMap.put(ConsumeTypeEnum.FastPayment.getDescribe(),new FastPaymentPointCal());
     }
 
     public IPointCal getPointCal(String consumeType) {
