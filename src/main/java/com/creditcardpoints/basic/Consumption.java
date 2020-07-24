@@ -32,6 +32,6 @@ public class Consumption {
         return amt;
     }
     public String describe(){
-        return time+" "+consumeType+" "+amt+"元， 积分 +";
+        return time+" "+consumeType+" "+amt+"元， 积分 ";
     }
 }

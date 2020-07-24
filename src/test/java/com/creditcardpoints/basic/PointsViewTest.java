@@ -45,6 +45,7 @@ public class PointsViewTest {
         consumptionListThree = Arrays.asList(weChat_25, weChat_18, pos_108, weChat_10, weChat_22, pos_208, fastPayment_208, fastPayment_2208);
         consumptionListFour = Arrays.asList(weChat_25, weChat_18, pos_108, weChat_10, weChat_22, pos_208, fastPayment_208, fastPayment_2208, installment_6400);
         consumptionListFive = Arrays.asList(weChat_25, weChat_18, pos_108, weChat_10, weChat_22, pos_208, fastPayment_208, fastPayment_2208, installment_6400);
+        consumptionListSix = Arrays.asList(weChat_25, weChat_18, pos_108, weChat_10, weChat_22, pos_208, fastPayment_208, fastPayment_2208, installment_6400);
     }
 
     @Test
@@ -105,7 +106,36 @@ public class PointsViewTest {
     public void given_consumption_list_five_when_add_gold_card_users_then_get_points_details() {
 
         PointsView pointsView = new PointsView();
-        String actual = pointsView.view(consumptionListFour, goldUser);
+        String actual = pointsView.view(consumptionListFive, goldUser);
+        Assert.assertEquals("总积分：1577\n" +
+                "2020-07-02 23:00 信用卡分期购物消费 6400元， 积分 +1060\n" +
+                "2020-07-02 22:30 快捷支付消费 2208元， 积分 +430\n" +
+                "2020-07-02 20:30 快捷支付消费 208元， 积分 +40\n" +
+                "2020-07-02 18:50 POS机消费 208元， 积分 +30\n" +
+                "2020-07-02 12:20 微信支付消费 22元， 积分 +1\n" +
+                "2020-07-02 08:20 微信支付消费 10元， 积分 +0\n" +
+                "2020-07-01 18:50 POS机消费 108元， 积分 +15\n" +
+                "2020-07-01 12:50 微信支付消费 18元， 积分 +0\n" +
+                "2020-07-01 12:20 微信支付消费 25元， 积分 +1", actual);
+    }
+
+    @Test
+    public void given_consumption_list_six_when_add_html_then_get_points_details() {
+
+        PointsView pointsView = new PointsView();
+        String actualHtml = pointsView.htmlView(consumptionListSix, goldUser);
+        String actual = pointsView.view(consumptionListSix, goldUser);
+
+        Assert.assertEquals("<h2>总积分：<b>1577</b></h2>\n" +
+                "<p>2020-07-02 23:00 信用卡分期购物消费 6400元， 积分 <b>+1060</b></p>\n" +
+                "<p>2020-07-02 22:30 快捷支付消费 2208元， 积分 <b>+430</b></p>\n" +
+                "<p>2020-07-02 20:30 快捷支付消费 208元， 积分 <b>+40</b></p>\n" +
+                "<p>2020-07-02 18:50 POS机消费 208元， 积分 <b>+30</b></p>\n" +
+                "<p>2020-07-02 12:20 微信支付消费 22元， 积分 <b>+1</b></p>\n" +
+                "<p>2020-07-02 08:20 微信支付消费 10元， 积分 <b>+0</b></p>\n" +
+                "<p>2020-07-01 18:50 POS机消费 108元， 积分 <b>+15</b></p>\n" +
+                "<p>2020-07-01 12:50 微信支付消费 18元， 积分 <b>+0</b></p>\n" +
+                "<p>2020-07-01 12:20 微信支付消费 25元， 积分 <b>+1</b></p>", actualHtml);
         Assert.assertEquals("总积分：1577\n" +
                 "2020-07-02 23:00 信用卡分期购物消费 6400元， 积分 +1060\n" +
                 "2020-07-02 22:30 快捷支付消费 2208元， 积分 +430\n" +

@@ -12,9 +12,15 @@ import java.util.List;
  * version: 1.0 <br>
  */
 public class PointsView {
+    private static final String HTML_OPEN_H2 = "<h2>";
+    private static final String HTML_CLOSE_H2 = "</h2>";
+    private static final String HTML_OPEN_P = "<p>";
+    private static final String HTML_CLOSE_P = "</p>";
+    private static final String HTML_OPEN_B = "<b>";
+    private static final String HTML_CLOSE_B = "</b>";
 
 
-    public String view(List<Consumption> consumptionList, User user) {
+    public String htmlView(List<Consumption> consumptionList, User user) {
         StringBuilder sb = new StringBuilder();
         StringBuilder result = new StringBuilder();
         long total = 0;
@@ -22,20 +28,27 @@ public class PointsView {
         consumptionList.sort(
                 (o1, o2) -> o2.getTime().compareTo(o1.getTime())
         );
+
         for (Consumption con : consumptionList) {
             CreditCardPoint creditCardPoint = new CreditCardPoint(con, user);
             total += creditCardPoint.point;
+            String htmlConsume = "<p>" + creditCardPoint.consumption.describe() + "<b>+" + creditCardPoint.point + "</b></p>";
             if ("".equals(sb.toString())) {
-                sb.append(creditCardPoint.consumption.describe())
-                        .append(creditCardPoint.point);
+                sb.append(htmlConsume);
             } else {
                 sb.append("\n")
-                        .append(creditCardPoint.consumption.describe())
-                        .append(creditCardPoint.point);
+                        .append(htmlConsume);
             }
         }
-        result.append("总积分：" + total + "\n");
+        result.append("<h2>总积分：<b>" + total + "</b></h2>\n");
         result.append(sb);
         return result.toString();
+    }
+
+    public String view(List<Consumption> consumptionList, User user) {
+        String htmlResult = htmlView(consumptionList, user);
+        String regex = "<[^>]+>";
+        String result = htmlResult.replaceAll(regex, "");
+        return result;
     }
 }
