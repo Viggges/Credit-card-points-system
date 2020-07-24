@@ -1,5 +1,7 @@
 package com.creditcardpoints.basic;
 
+import com.creditcardpoints.CommonConstant;
+
 /**
  * description: ConsumeTypeEnum <br>
  * date: 2020/7/23/023 15:42 <br>
@@ -11,19 +13,15 @@ public enum ConsumeTypeEnum {
     /**
      * POS机消费
      */
-    POS("POS机消费"),
-    WeChat("微信支付消费"),
-    FastPayment("快捷支付消费"),
-    Installment("信用卡分期购物消费");
+    POS(CommonConstant.CONSUME_POS),
+    WeChat(CommonConstant.CONSUME_WECHAT),
+    FastPayment(CommonConstant.CONSUME_FAST_PAYMENT),
+    Installment(CommonConstant.CONSUME_INSTALLMENT);
 
     private String describe;
 
     public String getDescribe() {
         return describe;
-    }
-
-    public void setDescribe(String describe) {
-        this.describe = describe;
     }
 
     ConsumeTypeEnum(String consumeType) {

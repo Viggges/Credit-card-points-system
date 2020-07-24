@@ -12,13 +12,18 @@ import java.math.BigDecimal;
  * version: 1.0 <br>
  */
 public class InstallmentPointCal implements IPointCal {
-    @Override
-    public long calPoint(Consumption consumption) {
-        BigDecimal amt = consumption.getAmt();
+    private static final BigDecimal LIMIT = new BigDecimal(5000);
 
-        if(amt.compareTo(new BigDecimal(5000))==1){
-            return amt.longValue()/10+100;
+    @Override
+    public long calBasicPoint(Consumption consumption) {
+        return consumption.getAmt().longValue() / 10;
+    }
+
+    @Override
+    public long calExtraPoint(Consumption consumption) {
+        if (consumption.getAmt().compareTo(LIMIT) == 1) {
+            return 100;
         }
-        return amt.longValue()/10;
+        return 0;
     }
 }

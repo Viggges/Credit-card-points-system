@@ -1,5 +1,7 @@
 package com.creditcardpoints.basic;
 
+import com.creditcardpoints.user.User;
+
 /**
  * description: CreditCardPoint <br>
  * date: 2020/7/23/023 10:52 <br>
@@ -10,10 +12,9 @@ package com.creditcardpoints.basic;
 public class CreditCardPoint {
     Consumption consumption;
     long point;
-
-    public CreditCardPoint(Consumption consumption) {
+    public CreditCardPoint(Consumption consumption, User user) {
         this.consumption = consumption;
         PointCal pointCal = new PointCal();
-        this.point = pointCal.calPoint(consumption);
+        this.point = pointCal.calPoint(consumption, user);
     }
 }

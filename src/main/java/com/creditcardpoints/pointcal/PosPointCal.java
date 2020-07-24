@@ -2,8 +2,6 @@ package com.creditcardpoints.pointcal;
 
 import com.creditcardpoints.basic.Consumption;
 
-import java.math.BigDecimal;
-
 /**
  * description: PosPointCal <br>
  * date: 2020/7/23/023 15:53 <br>
@@ -14,7 +12,12 @@ import java.math.BigDecimal;
 public class PosPointCal implements IPointCal {
 
     @Override
-    public long calPoint(Consumption consumption) {
-        return consumption.getAmt().setScale(0, BigDecimal.ROUND_DOWN).longValue() / 10;
+    public long calBasicPoint(Consumption consumption) {
+        return consumption.getAmt().longValue() / 10;
+    }
+
+    @Override
+    public long calExtraPoint(Consumption consumption) {
+        return 0;
     }
 }

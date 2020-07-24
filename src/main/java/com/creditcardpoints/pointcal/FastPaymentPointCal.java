@@ -1,8 +1,8 @@
 package com.creditcardpoints.pointcal;
 
+import com.creditcardpoints.CommonConstant;
+import com.creditcardpoints.user.User;
 import com.creditcardpoints.basic.Consumption;
-
-import java.math.BigDecimal;
 
 /**
  * description: FastPaymentPointCal <br>
@@ -14,9 +14,15 @@ import java.math.BigDecimal;
 public class FastPaymentPointCal implements IPointCal {
 
     @Override
-    public long calPoint(Consumption consumption) {
-        double amt = consumption.getAmt().setScale(0, BigDecimal.ROUND_DOWN).doubleValue();
+    public long calBasicPoint(Consumption consumption) {
+        double amt = consumption.getAmt().doubleValue();
+        return (long) amt / 10;
+    }
+
+    @Override
+    public long calExtraPoint(Consumption consumption) {
+        double amt = consumption.getAmt().doubleValue();
         double extraPoints = (5 * Math.floor(amt / 100)) < 100 ? 5 * Math.floor(amt / 100) : 100;
-        return (long) extraPoints + (long) amt / 10;
+        return (long) extraPoints;
     }
 }

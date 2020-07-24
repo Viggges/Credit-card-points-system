@@ -1,5 +1,7 @@
 package com.creditcardpoints.basic;
 
+import com.creditcardpoints.user.User;
+
 import java.util.List;
 
 /**
@@ -11,7 +13,8 @@ import java.util.List;
  */
 public class PointsView {
 
-    public String view(List<Consumption> consumptionList) {
+
+    public String view(List<Consumption> consumptionList, User user) {
         StringBuilder sb = new StringBuilder();
         StringBuilder result = new StringBuilder();
         long total = 0;
@@ -20,7 +23,7 @@ public class PointsView {
                 (o1, o2) -> o2.getTime().compareTo(o1.getTime())
         );
         for (Consumption con : consumptionList) {
-            CreditCardPoint creditCardPoint = new CreditCardPoint(con);
+            CreditCardPoint creditCardPoint = new CreditCardPoint(con, user);
             total += creditCardPoint.point;
             if ("".equals(sb.toString())) {
                 sb.append(creditCardPoint.consumption.describe())

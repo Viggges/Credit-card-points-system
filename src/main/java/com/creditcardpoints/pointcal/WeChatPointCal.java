@@ -2,8 +2,6 @@ package com.creditcardpoints.pointcal;
 
 import com.creditcardpoints.basic.Consumption;
 
-import java.math.BigDecimal;
-
 /**
  * description: WeChatPointCal <br>
  * date: 2020/7/23/023 15:53 <br>
@@ -12,8 +10,14 @@ import java.math.BigDecimal;
  * version: 1.0 <br>
  */
 public class WeChatPointCal implements IPointCal {
+
     @Override
-    public long calPoint(Consumption consumption) {
-        return consumption.getAmt().setScale(0, BigDecimal.ROUND_DOWN).longValue() / 20;
+    public long calBasicPoint(Consumption consumption) {
+        return consumption.getAmt().longValue() / 20;
+    }
+
+    @Override
+    public long calExtraPoint(Consumption consumption) {
+        return 0;
     }
 }
