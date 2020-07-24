@@ -51,7 +51,7 @@ public class PointsViewTest {
     @Test
     public void given_consumption_list_one_when_pos_then_get_points_details() {
         PointsView pointsView = new PointsView();
-        String actual = pointsView.view(consumptionListOne, generalUser);
+        String actual = pointsView.textView(consumptionListOne, generalUser);
         Assert.assertEquals("总积分：30\n" +
                 "2020-07-02 18:50 POS机消费 208元， 积分 +20\n" +
                 "2020-07-01 18:50 POS机消费 108元， 积分 +10\n" +
@@ -61,7 +61,7 @@ public class PointsViewTest {
     @Test
     public void given_consumption_list_two_when_add_weChat_then_get_points_details() {
         PointsView pointsView = new PointsView();
-        String actual = pointsView.view(consumptionListTwo, generalUser);
+        String actual = pointsView.textView(consumptionListTwo, generalUser);
         Assert.assertEquals("总积分：32\n" +
                 "2020-07-02 18:50 POS机消费 208元， 积分 +20\n" +
                 "2020-07-02 12:20 微信支付消费 22元， 积分 +1\n" +
@@ -74,7 +74,7 @@ public class PointsViewTest {
     @Test
     public void given_consumption_list_three_when_add_fast_payment_then_get_points_details() {
         PointsView pointsView = new PointsView();
-        String actual = pointsView.view(consumptionListThree, generalUser);
+        String actual = pointsView.textView(consumptionListThree, generalUser);
         Assert.assertEquals("总积分：382\n" +
                 "2020-07-02 22:30 快捷支付消费 2208元， 积分 +320\n" +
                 "2020-07-02 20:30 快捷支付消费 208元， 积分 +30\n" +
@@ -89,7 +89,7 @@ public class PointsViewTest {
     @Test
     public void given_consumption_list_four_when_add_installment_then_get_points_details() {
         PointsView pointsView = new PointsView();
-        String actual = pointsView.view(consumptionListFour, generalUser);
+        String actual = pointsView.textView(consumptionListFour, generalUser);
         Assert.assertEquals("总积分：1122\n" +
                 "2020-07-02 23:00 信用卡分期购物消费 6400元， 积分 +740\n" +
                 "2020-07-02 22:30 快捷支付消费 2208元， 积分 +320\n" +
@@ -106,7 +106,7 @@ public class PointsViewTest {
     public void given_consumption_list_five_when_add_gold_card_users_then_get_points_details() {
 
         PointsView pointsView = new PointsView();
-        String actual = pointsView.view(consumptionListFive, goldUser);
+        String actual = pointsView.textView(consumptionListFive, goldUser);
         Assert.assertEquals("总积分：1577\n" +
                 "2020-07-02 23:00 信用卡分期购物消费 6400元， 积分 +1060\n" +
                 "2020-07-02 22:30 快捷支付消费 2208元， 积分 +430\n" +
@@ -124,7 +124,7 @@ public class PointsViewTest {
 
         PointsView pointsView = new PointsView();
         String actualHtml = pointsView.htmlView(consumptionListSix, goldUser);
-        String actual = pointsView.view(consumptionListSix, goldUser);
+        String actual = pointsView.textView(consumptionListSix, goldUser);
 
         Assert.assertEquals("<h2>总积分：<b>1577</b></h2>\n" +
                 "<p>2020-07-02 23:00 信用卡分期购物消费 6400元， 积分 <b>+1060</b></p>\n" +

@@ -45,10 +45,10 @@ public class PointsView {
         return result.toString();
     }
 
-    public String view(List<Consumption> consumptionList, User user) {
+    public String textView(List<Consumption> consumptionList, User user) {
         String htmlResult = htmlView(consumptionList, user);
         String regex = "<[^>]+>";
-        String result = htmlResult.replaceAll(regex, "");
-        return result;
+        return htmlResult.replaceAll(regex, "");
     }
 }
+
